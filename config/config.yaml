@@ -1,0 +1,7 @@
+# Full Example: https://github.com/geekan/MetaGPT/blob/main/config/config2.example.yaml
+# Reflected Code: https://github.com/geekan/MetaGPT/blob/main/metagpt/config2.py
+# Config Docs: https://docs.deepwisdom.ai/main/en/guide/get_started/configuration.html
+llm:
+  api_type: "openai"  # or azure / ollama / groq etc.
+  base_url: "https://oneapi.deepwisdom.ai/v1"  # or forward url / other llm url
+  api_key: "sk-b6XnSDwGJCHHly3lC3B36cE3Ac014914AaD07b17Ca3e18F0"

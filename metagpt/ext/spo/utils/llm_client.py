@@ -86,9 +86,9 @@ def extract_content(xml_string: str, tag: str) -> Optional[str]:
 async def main():
     # test LLM
     SPO_LLM.initialize(
-        optimize_kwargs={"model": "gpt-4o", "temperature": 0.7},
+        optimize_kwargs={"model": "claude-3-7-sonnet", "temperature": 0.7},
         evaluate_kwargs={"model": "gpt-4o-mini", "temperature": 0.3},
-        execute_kwargs={"model": "gpt-4o-mini", "temperature": 0.3},
+        execute_kwargs={"model": "deepseek-reasoner", "temperature": 0.3},
     )
 
     llm = SPO_LLM.get_instance()
