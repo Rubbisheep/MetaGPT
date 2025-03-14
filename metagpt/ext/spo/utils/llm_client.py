@@ -29,11 +29,13 @@ class SPO_LLM:
 
     def _load_llm_config(self, kwargs: dict) -> Any:
         model = kwargs.get("model")
+
         if not model:
             raise ValueError("'model' parameter is required")
 
         try:
             model_config = ModelsConfig.default().get(model)
+            
             if model_config is None:
                 raise ValueError(f"Model '{model}' not found in configuration")
 
@@ -62,7 +64,13 @@ class SPO_LLM:
             raise ValueError(f"Invalid request type. Valid types: {', '.join([t.value for t in RequestType])}")
 
         response = await llm.acompletion(messages)
-        return response.choices[0].message.content
+        # For EXECUTE type, append reasoning_content if available
+        try:
+            response.choices[0].message.reasoning_content
+            return f"Reasoning:\n{response.choices[0].message.reasoning_content}\nAnswer:\n{response.choices[0].message.content}"
+        except:
+            return f"Answer:{response.choices[0].message.content}"
+        # return response.choices[0].message.content
 
     @classmethod
     def initialize(cls, optimize_kwargs: dict, evaluate_kwargs: dict, execute_kwargs: dict) -> None:
@@ -96,11 +104,11 @@ async def main():
     # test messages
     hello_msg = [{"role": "user", "content": "hello"}]
     response = await llm.responser(request_type=RequestType.EXECUTE, messages=hello_msg)
-    logger(f"AI: {response}")
+    logger.info(f"AI Execute: {response}")
     response = await llm.responser(request_type=RequestType.OPTIMIZE, messages=hello_msg)
-    logger(f"AI: {response}")
+    logger.info(f"AI Optimize: {response}")
     response = await llm.responser(request_type=RequestType.EVALUATE, messages=hello_msg)
-    logger(f"AI: {response}")
+    logger.info(f"AI Evaluate: {response}")
 
 
 if __name__ == "__main__":

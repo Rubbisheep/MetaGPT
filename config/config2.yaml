@@ -3,6 +3,36 @@
 # Config Docs: https://docs.deepwisdom.ai/main/en/guide/get_started/configuration.html
 llm:
   api_type: "openai"  # or azure / ollama / groq etc.
-  model: "gpt-4-turbo"  # or gpt-3.5-turbo
-  base_url: "https://api.openai.com/v1"  # or forward url / other llm url
-  api_key: "YOUR_API_KEY"
+  model: "gpt-3.5-turbo" #"claude-3-7-sonnet" #"deepseek-reasoner" # or gpt-3.5-turbo
+  base_url: "https://oneapi.deepwisdom.ai/v1"  # or forward url / other llm url
+  api_key: "sk-b6XnSDwGJCHHly3lC3B36cE3Ac014914AaD07b17Ca3e18F0"
+  proxy: ""  # for LLM API requests
+  # timeout: 600 # Optional. If set to 0, default value is 300.
+  # Details: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+  pricing_plan: "" # Optional. Use for Azure LLM when its model name is not the same as OpenAI's
+
+models:
+ "claude-3-7-sonnet": # model: "gpt-4-turbo"  # or gpt-3.5-turbo
+   api_type: "openai"  # or azure / ollama / groq etc.
+   base_url: "https://oneapi.deepwisdom.ai/v1"
+   api_key: "sk-b6XnSDwGJCHHly3lC3B36cE3Ac014914AaD07b17Ca3e18F0"
+   proxy: ""  # for LLM API requests
+   # timeout: 600 # Optional. If set to 0, default value is 300.
+   # Details: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+   pricing_plan: "" # Optional. Use for Azure LLM when its model name is not the same as OpenAI's
+ "deepseek-reasoner": # model: "gpt-4-turbo"  # or gpt-3.5-turbo
+   api_type: "openai"  # or azure / ollama / groq etc.
+   base_url: "https://oneapi.deepwisdom.ai/v1"
+   api_key: "sk-b6XnSDwGJCHHly3lC3B36cE3Ac014914AaD07b17Ca3e18F0"
+   proxy: ""  # for LLM API requests
+   # timeout: 600 # Optional. If set to 0, default value is 300.
+   # Details: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+   pricing_plan: "" # Optional. Use for Azure LLM when its model name is not the same as OpenAI's
+ "gpt-4o-mini": # model: "gpt-4-turbo"  # or gpt-3.5-turbo
+   api_type: "openai"  # or azure / ollama / groq etc.
+   base_url: "https://oneapi.deepwisdom.ai/v1"
+   api_key: "sk-b6XnSDwGJCHHly3lC3B36cE3Ac014914AaD07b17Ca3e18F0"
+   proxy: ""  # for LLM API requests
+   # timeout: 600 # Optional. If set to 0, default value is 300.
+   # Details: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+   pricing_plan: "" # Optional. Use for Azure LLM when its model name is not the same as OpenAI's
